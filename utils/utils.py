@@ -14,6 +14,16 @@ def get_sampled_data(dataset_path, n = 1000):
   else:
     return data
 
+def temp():
+  #TODO
+  for folder in tqdm(folders):
+  csv_files = os.listdir(DATA_DIR + folder)
+  for csv in csv_files:
+    if '.csv' in csv:
+      if DEBUG: print(DATA_DIR + "full/" + folder + "/" + csv)
+      data_sample = get_sampled_data(DATA_DIR + folder + "/" + csv)
+      data_sample.to_csv(DATA_DIR + "sample/" + folder + csv)
+
 
 def get_clean_data(dataset_path, drop_col):
   
