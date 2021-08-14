@@ -29,13 +29,9 @@ def get_sampled_data(dataset_path, n = 1000):
 #       data_sample.to_csv(DATA_DIR + "sample/" + folder + csv)
 
 
-def get_clean_data(dataset_path, drop_col):
-  
-  data = pd.read_csv(dataset_path)  
+def get_clean_data(data):
   
   if data.shape[0] > 0:
-
-    data = data.drop(drop_col, axis = 1)
 
     # TODO: is this needed? gender replacing with <unk> 
 
@@ -45,7 +41,17 @@ def get_clean_data(dataset_path, drop_col):
 
     data = data.drop(data.columns[data.isna().any()].tolist(), axis =1)
 
-  return data
+    temp_df = data.drop("pol",axis =1)
+    cat_columns = temp_df.select_dtypes("object").columns
+    if len(cat_columns) > 0 :
+      dummy_df = pd.get_dummies(temp_df[list(cat_columns)])
+      data = pd.concat([data.drop(cat_columns,axis =1 ), dummy_df], axis = 1)
+
+      return data
+    else:
+      
+      return data
+
 
 
 
@@ -126,48 +132,15 @@ def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
 
   return pd.concat(li, axis=0, ignore_index=True)
 
-#--------------------------------------------- raw
+def make_dummies(dataframe):
+    temp_df = dataframe.drop("pol",axis =1)
+    cat_columns = temp_df .select_dtypes("object").columns
+    dummy_df = pd.get_dummies(temp_df[list(cat_columns)])
 
-# Funtion to return the joined data 
+    return pd.concat([dataframe.drop(cat_columns,axis =1 ), dummy_df], axis = 1)
 
-def get_dataframe(segment_to_run = "Canada_0_dating"):
-  """ 
-  Function to concat the dataframe from training. 
-
-  @param : 
-    - segment_to_run : The segment which needs to be trained. 
-
-  @ returns :
-    - a dataframe with data points with Country _ gender _ database.
-  """
-
-  path = r'/content/drive/Shareddrives/Facial Recognition/data/' + segment_to_run # use your path
-  
-  all_files = glob.glob(path + "/*.csv")
-
-  li = []
-
-  for filename in all_files:
-      df = pd.read_csv(filename, index_col=None, header=0)
-      li.append(df)
-
-  return pd.concat(li, axis=0, ignore_index=True)
-
-def get_experiment_data(dataframe, column_list):
-  return dataframe[column_list]
-
-def save_eda(arr):
-  # saving the results 
-  results_df = pd.DataFrame(arr, columns = ["Segment","Samples","Distribution"])
-  results_file_loc = "/content/drive/Shareddrives/Facial Recognition/eda/results/class_distribution.csv"
-  results_df.to_csv(results_file_loc, index=False)
-  print("Distribution Saved !!")
-
-def save_segment_results(arr):
-  # saving the results 
-  results_df = pd.DataFrame(arr, columns = ["Features","Test AUC","Test Accuracy","Segment"])
-  results_file_loc = "/content/drive/Shareddrives/Facial Recognition/exp_variation_ethinicity_vs_segments/results/LR_ethinicity_vs_segments.csv"
-  results_df.to_csv(results_file_loc, index=False)
+def save_results(results_array, location):
+  results_df = pd.DataFrame(results_array, columns = ["Group_Name","Model","feature_set","Test AUC","Test ACC"])
+  results_df.to_csv(location, index=False)
   print(" Segment Results Saved !!")
 
-#--------------------------------------------- Not useful
