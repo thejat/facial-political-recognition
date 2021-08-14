@@ -53,8 +53,6 @@ def get_clean_data(data):
       return data
 
 
-
-
 def get_model(dimension_input):
   model = Sequential()
   model.add(Dense(1024, input_dim=dimension_input, activation='relu'))
@@ -132,12 +130,6 @@ def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
 
   return pd.concat(li, axis=0, ignore_index=True)
 
-def make_dummies(dataframe):
-    temp_df = dataframe.drop("pol",axis =1)
-    cat_columns = temp_df .select_dtypes("object").columns
-    dummy_df = pd.get_dummies(temp_df[list(cat_columns)])
-
-    return pd.concat([dataframe.drop(cat_columns,axis =1 ), dummy_df], axis = 1)
 
 def save_results(results_array, location):
   results_df = pd.DataFrame(results_array, columns = ["Group_Name","Model","feature_set","Test AUC","Test ACC"])
