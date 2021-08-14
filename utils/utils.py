@@ -103,6 +103,29 @@ def fit_and_get_metrics(data, model_name):
 def get_dataframe_name(dataset_path):
   return "_".join(dataset_path.split("/")[-1:][0][:-4].split("_")[1:])
 
+def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
+  """ 
+  Function to concat the dataframe from training. 
+
+  @param : 
+    - segment_to_run : The segment which needs to be trained. 
+
+  @ returns :
+    - a dataframe with data points with Country _ gender _ database.
+  """
+
+  path = r'data/sample/' + segment_to_run # use your path
+  
+  all_files = glob.glob(path + "/*.csv")
+
+  li = []
+
+  for filename in all_files:
+      df = pd.read_csv(filename, index_col=None, header=0)
+      li.append(df)
+
+  return pd.concat(li, axis=0, ignore_index=True)
+
 #--------------------------------------------- raw
 
 # Funtion to return the joined data 
