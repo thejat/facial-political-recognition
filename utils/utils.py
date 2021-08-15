@@ -108,7 +108,7 @@ def save_model(model, model_name , model_path):
   else:
     return NotImplementedError
 
-def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, dry_run = False):
+def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, model_params = None, dry_run = False):
 
   '''
   
@@ -117,7 +117,10 @@ def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, dry_run = 
   if model_name == "LR":
     # TODO: LR is the same as NN, remove sklearn version and use a keras version
 
-    lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1)
+    if model_params is not None:
+      lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1, **model_params)  
+    else:
+      lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1, max_iter = 100)
 
     if dry_run:
       return 0, 0, lr
@@ -135,7 +138,10 @@ def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, dry_run = 
     if dry_run:
       return 0, 0, model
 
-    model.fit(epochs = 25, x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2)
+    if model_params is not None:
+      model.fit(x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2, **model_params)
+    else:
+      model.fit(epochs = 25, x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2)
     y_pred = model.predict(X_test)
     auc = round(metrics.roc_auc_score(y_test, y_pred)*100,2)
     _, acc = model.evaluate(X_test, y_test,batch_size=1000, verbose=0)
@@ -177,8 +183,8 @@ def get_segment_dataframe(data_dir, segment_to_run = "Canada_0_dating"):
   return pd.concat(li, axis=0, ignore_index=True)
 
 
-def save_results(results_array, location):
-  results_df = pd.DataFrame(results_array, columns = ["Group Name", "Model", "Feature Set", "Test AUC", "Test Accuracy"])
+def save_results(results_array, location, columns):
+  results_df = pd.DataFrame(results_array, columns = columns)
   results_df.to_csv(location, index=False)
   logger.debug("Results Saved.")
 
