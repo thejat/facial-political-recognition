@@ -95,7 +95,7 @@ def fit_and_get_metrics(data, model_name, dry_run = False):
     y_pred = lr.predict_proba(X_test)
     auc = round(metrics.roc_auc_score(y_test, y_pred[:,1])*100,2)
     acc = round(metrics.accuracy_score(y_test, lr.predict(X_test))*100,2)
-    return auc, acc, model
+    return auc, acc, lr
   
   elif model_name == "NN":
     # assert 'pol' in data.columns
