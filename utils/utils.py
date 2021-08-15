@@ -10,8 +10,16 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 def get_sampled_data(dataset_path, n = 1000):
-  
-  # TODO: Add docstring and example
+  '''
+  Returns the sampled data.
+
+  Parameters:
+          dataset_path (str): A string where the data in csv is saved.
+          n (int): Number of samples 
+
+  Returns:
+          data (DataFrame): A sampled dataframe.
+  '''
 
   data = pd.read_csv(dataset_path)  
 
@@ -21,6 +29,19 @@ def get_sampled_data(dataset_path, n = 1000):
     return data
 
 def get_clean_data(data):
+  '''
+    Returns the processed data.
+
+    The function takes in a dataframe and processes : 
+      - replaces columns with NaN values with mean values 
+      - Creates dummies for "object" data type columns
+
+    Parameters:
+            data (pd.DataFrame): A pandas DataFrame
+
+    Returns:
+            data (DataFrame): A processed DataFrame
+    '''
 
   # TODO: Add docstring and example
   
@@ -32,7 +53,7 @@ def get_clean_data(data):
     for col in data.loc[:, data.isna().any()].columns:
       data[col] = data[col].fillna(data[col].mean())
 
-    data = data.drop(data.columns[data.isna().any()].tolist(), axis =1)
+    # data = data.drop(data.columns[data.isna().any()].tolist(), axis =1)
 
     temp_df = data.drop("pol",axis =1)
     cat_columns = temp_df.select_dtypes("object").columns
@@ -47,9 +68,16 @@ def get_clean_data(data):
 
 
 def get_model(dimension_input):
+  '''
+  The function takes in input dimension to create the model architecture and 
+  Returns the Neural Network Model
 
-  # TODO: Add docstring and example
+  Parameters:
+          dimension_input (int): input dimension of the neural network
 
+  Returns:
+          model (Keras Model): Keras neural network 
+  '''
 
   model = Sequential()
   model.add(Dense(1024, input_dim=dimension_input, activation='relu'))
@@ -64,6 +92,15 @@ def get_model(dimension_input):
   return model
 
 def save_model(model, model_name , model_path):
+  '''
+  Function to save the trained models
+
+  Parameters:
+    model (Keras Model) : Fitted Model 
+    model_name (str)    : Either of the models [LR, NN] for logistic models or Neural Network.
+    model_path (str)    : Location where the models are saved. 
+
+  '''
   if model_name == "LR":
     joblib.dump(model, model_path)
   elif model_name == "NN":
@@ -73,7 +110,9 @@ def save_model(model, model_name , model_path):
 
 def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, dry_run = False):
 
-  # TODO: Add docstring and example
+  '''
+  
+  '''
 
   if model_name == "LR":
     # TODO: LR is the same as NN, remove sklearn version and use a keras version
@@ -125,7 +164,7 @@ def get_segment_dataframe(data_dir, segment_to_run = "Canada_0_dating"):
     - a dataframe with data points with Country _ gender _ database.
   """
 
-  path = DATA_DIR + "/" + segment_to_run # use your path
+  path = data_dir + "/" + segment_to_run # use your path
   
   all_files = glob.glob(path + "/*.csv")
 
