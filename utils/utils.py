@@ -79,14 +79,18 @@ def fit_and_get_metrics(data, model_name, dry_run = False):
   y = data['pol'].replace({"liberal": 1, "conservative": 0})
   X = data.drop('pol', axis = 1)
 
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2) 
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2) 
   # TODO: check reproducibility of splits so that additional metrics computed post-hoc
   # are consistent. See https://stackoverflow.com/questions/53182821/scikit-learn-train-test-split-not-reproducible
+
+  # TODO: move train test splitting outside and perform once over the full dataframe before subsetting to the four settings
+
+  del X, y
 
   if model_name == "LR":
     # TODO: LR is the same as NN, remove sklearn version and use a keras version
     # assert 'pol' in data.columns
-    lr = LogisticRegression(penalty='l1', solver="saga")
+    lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1)
 
     if dry_run:
       return 0, 0, lr
@@ -105,9 +109,9 @@ def fit_and_get_metrics(data, model_name, dry_run = False):
     if dry_run:
       return 0, 0, model
 
-    model.fit(epochs=25, x = X_train, y = y_train, batch_size = 1000, verbose = 0, validation_split = 0.2)
+    model.fit(epochs = 25, x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2)
     y_pred = model.predict(X_test)
-    auc = round(metrics.roc_auc_score(y_test,y_pred)*100,2)
+    auc = round(metrics.roc_auc_score(y_test, y_pred)*100,2)
     _, acc = model.evaluate(X_test, y_test,batch_size=1000, verbose=0)
     return auc, round(acc*100, 2), model
   
