@@ -71,25 +71,13 @@ def save_model(model, model_name , model_path):
   else:
     return NotImplementedError
 
-def fit_and_get_metrics(data, model_name, dry_run = False):
+def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, dry_run = False):
 
   # TODO: Add docstring and example
 
-
-  y = data['pol'].replace({"liberal": 1, "conservative": 0})
-  X = data.drop('pol', axis = 1)
-
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2) 
-  # TODO: check reproducibility of splits so that additional metrics computed post-hoc
-  # are consistent. See https://stackoverflow.com/questions/53182821/scikit-learn-train-test-split-not-reproducible
-
-  # TODO: move train test splitting outside and perform once over the full dataframe before subsetting to the four settings
-
-  del X, y
-
   if model_name == "LR":
     # TODO: LR is the same as NN, remove sklearn version and use a keras version
-    # assert 'pol' in data.columns
+
     lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1)
 
     if dry_run:
@@ -102,7 +90,6 @@ def fit_and_get_metrics(data, model_name, dry_run = False):
     return auc, acc, lr
   
   elif model_name == "NN":
-    # assert 'pol' in data.columns
 
     model = get_model(X_train.shape[1])
 
