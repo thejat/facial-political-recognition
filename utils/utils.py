@@ -1,16 +1,18 @@
+import glob
+import numpy as np
+import pandas as pd
+import joblib
+from loguru import logger
 from sklearn import preprocessing, metrics
 from sklearn.model_selection import train_test_split
-
-import glob
-import pandas as pd
-import numpy as np
-
 from sklearn.linear_model import LogisticRegression
 from keras.models import Sequential
 from keras.layers import Dense
 
 def get_sampled_data(dataset_path, n = 1000):
   
+  # TODO: Add docstring and example
+
   data = pd.read_csv(dataset_path)  
 
   if data.shape[0] > n:
@@ -18,18 +20,9 @@ def get_sampled_data(dataset_path, n = 1000):
   else:
     return data
 
-# def temp():
-#   #TODO
-#   for folder in tqdm(folders):
-#   csv_files = os.listdir(DATA_DIR + folder)
-#   for csv in csv_files:
-#     if '.csv' in csv:
-#       if DEBUG: print(DATA_DIR + "full/" + folder + "/" + csv)
-#       data_sample = get_sampled_data(DATA_DIR + folder + "/" + csv)
-#       data_sample.to_csv(DATA_DIR + "sample/" + folder + csv)
-
-
 def get_clean_data(data):
+
+  # TODO: Add docstring and example
   
   if data.shape[0] > 0:
 
@@ -54,6 +47,10 @@ def get_clean_data(data):
 
 
 def get_model(dimension_input):
+
+  # TODO: Add docstring and example
+
+
   model = Sequential()
   model.add(Dense(1024, input_dim=dimension_input, activation='relu'))
   model.add(Dense(512, input_dim=1024, activation='relu'))
@@ -66,50 +63,69 @@ def get_model(dimension_input):
 
   return model
 
-def fit_and_get_metrics(data, model_name):
+def save_model(model, model_name , model_path):
+  if model_name == "LR":
+    joblib.dump(model, model_path)
+  elif model_name == "NN":
+    model.save(model_path)
+  else:
+    return NotImplementedError
 
-  y = data['pol'].replace({"liberal":1,"conservative":0})
+def fit_and_get_metrics(data, model_name, dry_run = False):
+
+  # TODO: Add docstring and example
+
+
+  y = data['pol'].replace({"liberal": 1, "conservative": 0})
   X = data.drop('pol', axis = 1)
 
-  X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2) 
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2) 
+  # TODO: check reproducibility of splits so that additional metrics computed post-hoc
+  # are consistent. See https://stackoverflow.com/questions/53182821/scikit-learn-train-test-split-not-reproducible
 
   if model_name == "LR":
+    # TODO: LR is the same as NN, remove sklearn version and use a keras version
     # assert 'pol' in data.columns
-    lr = LogisticRegression(penalty='l1',solver="saga")
+    lr = LogisticRegression(penalty='l1', solver="saga")
+
+    if dry_run:
+      return 0, 0, lr
 
     lr.fit(X_train, y_train)
-
     y_pred = lr.predict_proba(X_test)
-
-    auc = round(metrics.roc_auc_score(y_test,y_pred[:,1])*100,2)
+    auc = round(metrics.roc_auc_score(y_test, y_pred[:,1])*100,2)
     acc = round(metrics.accuracy_score(y_test, lr.predict(X_test))*100,2)
-
-    return auc, acc
+    return auc, acc, model
   
   elif model_name == "NN":
     # assert 'pol' in data.columns
 
     model = get_model(X_train.shape[1])
-    model.fit(epochs=25,x=X_train,y=y_train,batch_size=1000, verbose=0, validation_split=0.2)
 
+    if dry_run:
+      return 0, 0, model
+
+    model.fit(epochs=25, x = X_train, y = y_train, batch_size = 1000, verbose = 0, validation_split = 0.2)
     y_pred = model.predict(X_test)
-  
     auc = round(metrics.roc_auc_score(y_test,y_pred)*100,2)
-
     _, acc = model.evaluate(X_test, y_test,batch_size=1000, verbose=0)
-
-    return auc, round(acc*100, 2)
+    return auc, round(acc*100, 2), model
   
   else:
-    print(" Enter Model name LR or NN for Logistic regression or Neural Network respectively.")
-
+    logger.debug(" Enter model name string as LR or NN (for Logistic Regression or Neural Network respectively).")
+    return NotImplementedError
   
 def get_dataframe_name(dataset_path):
+  # TODO: Add docstring and example
   return "_".join(dataset_path.split("/")[-1:][0][:-4].split("_")[1:])
 
-def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
+
+
+def get_segment_dataframe(data_dir, segment_to_run = "Canada_0_dating"):
   """ 
   Function to concat the dataframe from training. 
+
+  # TODO: Add example
 
   @param : 
     - segment_to_run : The segment which needs to be trained. 
@@ -118,7 +134,7 @@ def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
     - a dataframe with data points with Country _ gender _ database.
   """
 
-  path = r'data/sample/' + segment_to_run # use your path
+  path = DATA_DIR + "/" + segment_to_run # use your path
   
   all_files = glob.glob(path + "/*.csv")
 
@@ -132,7 +148,7 @@ def get_segment_dataframe(segment_to_run = "Canada_0_dating"):
 
 
 def save_results(results_array, location):
-  results_df = pd.DataFrame(results_array, columns = ["Group_Name","Model","feature_set","Test AUC","Test ACC"])
+  results_df = pd.DataFrame(results_array, columns = ["Group Name", "Model", "Feature Set", "Test AUC", "Test Accuracy"])
   results_df.to_csv(location, index=False)
-  print(" Segment Results Saved !!")
+  logger.debug("Results Saved.")
 
