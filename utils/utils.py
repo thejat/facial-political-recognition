@@ -42,8 +42,6 @@ def get_clean_data(data):
     Returns:
             data (DataFrame): A processed DataFrame
     '''
-
-  # TODO: Add docstring and example
   
   if data.shape[0] > 0:
 
