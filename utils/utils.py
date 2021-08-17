@@ -33,7 +33,8 @@ def get_clean_data(data):
     Returns the processed data.
 
     The function takes in a dataframe and processes : 
-      - replaces columns with NaN values with mean values 
+      - Replaces columns with NaN values with mean values 
+      - Drops columns with the NaN values, even after mean impute. 
       - Creates dummies for "object" data type columns
 
     Parameters:
@@ -45,13 +46,17 @@ def get_clean_data(data):
   
   if data.shape[0] > 0:
 
-    # TODO: is this needed? gender replacing with <unk> 
-
-    # TODO: replacing other columns with mean values of the age and 5 big personality traits 
+    # replacing other columns with mean values of the age and 5 big personality traits 
     for col in data.loc[:, data.isna().any()].columns:
       data[col] = data[col].fillna(data[col].mean())
 
-    # data = data.drop(data.columns[data.isna().any()].tolist(), axis =1)
+    '''
+    If after mean imputing the columns remain empty, which is only possible 
+    if the whole column is empty, so dropping such columns in the analysis. 
+    # TODO : could also be replaced with zeroes, if we want to have the same column sizes
+    in the experiments. 
+    '''
+    data = data.drop(data.columns[data.isna().any()].tolist(), axis =1)
 
     temp_df = data.drop("pol",axis =1)
     cat_columns = temp_df.select_dtypes("object").columns
@@ -109,6 +114,20 @@ def save_model(model, model_name , model_path):
 def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, model_params = None, dry_run = False):
 
   '''
+  Function to calculate accuracy (acc) and Area under the ROCr Curve (AUC)
+
+  Parameters : 
+    - model_name (list): Either Logistic or Neural Network Model ['LR','NN']
+    - X_train, y_train, X_test, y_test (dataframe) : train and test data 
+    - model_params (dict) : 
+                            - For logistic regression : the total number of iterations 
+                            - For Neural Network : Epochs to train the model
+    - dry_run : # TODO Not sure what it does 
+
+  Returns : 
+    - AUC as auc (float64) 
+    - Accuracy as acc  (float64)
+    - model : trained model
   
   '''
 
@@ -150,26 +169,36 @@ def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, model_para
     return NotImplementedError
   
 def get_dataframe_name(dataset_path):
-  # TODO: Add docstring and example
+  '''
+  Funtion to extract the segment while compiling the ethnicity group 
+  
+  Parameters :
+    - dataset_path (str) : Take the dataset path of the data being processed. 
+
+  Return :
+    - Only the dataset name from the data path. 
+
+  Example: 
+    - datasetL_path : "./data/sample/US_0_FB/segment_united states_0_fb_india.csv"
+    - returns : "segment_united states_0_fb_india"
+  '''
   return "_".join(dataset_path.split("/")[-1:][0][:-4].split("_")[1:])
 
 
 
 def get_segment_dataframe(data_dir, segment_to_run = "Canada_0_dating"):
-  """ 
+  '''
   Function to concat the dataframe from training. 
 
-  # TODO: Add example
-
   @param : 
-    - segment_to_run : The segment which needs to be trained. 
+    - data_dir (str) : The main folder where the segmented data is saved.
+    - segment_to_run : The segment which needs to be trained ( folder containing subsets)
 
   @ returns :
     - a dataframe with data points with Country _ gender _ database.
-  """
+  '''
 
   path = data_dir + "/" + segment_to_run # use your path
-  
   all_files = glob.glob(path + "/*.csv")
 
   li = []
@@ -182,6 +211,15 @@ def get_segment_dataframe(data_dir, segment_to_run = "Canada_0_dating"):
 
 
 def save_results(results_array, location, columns):
+  '''
+  Function to save the results array 
+
+  Parameters: 
+    - results_array (list): list of model results containing the segment and subsegments.
+    - location (file_path str) : file_location where the results will be saved.
+    - columns (list) : Column names for the dataframe in which the results array is saved.
+  
+  '''
   results_df = pd.DataFrame(results_array, columns = columns)
   results_df.to_csv(location, index=False)
   logger.debug("Results Saved.")
