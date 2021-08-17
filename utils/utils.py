@@ -7,6 +7,7 @@ from sklearn import preprocessing, metrics
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from keras.models import Sequential
+from keras.models import load_model as keras_load_model
 from keras.layers import Dense
 
 def get_sampled_data(dataset_path, n = 1000):
@@ -111,22 +112,69 @@ def save_model(model, model_name , model_path):
   else:
     return NotImplementedError
 
-def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, model_params = None, dry_run = False):
+def read_model(model_name, model_path):
+  '''
+  Function to read the trained models
+
+  Parameters:
+    model_name (str)    : Either of the models [LR, NN] for logistic models or Neural Network.
+    model_path (str)    : Location where the models are saved. 
+
+  Returns :
+    - model : model read from disk
+  '''
+
+  if model_name == "LR":
+    return joblib.load(model_path)
+  elif model_name == "NN":
+    return keras_load_model(model_path)
+  else:
+    return NotImplementedError
+
+def get_metrics(model_name, model, X_test, y_test):
+  '''
+  Function to get test metrics from the trained models
+
+  Parameters: 
+    model_name (str)         : Either of the models [LR, NN] for logistic models or Neural Network.
+    model (Keras Model)      : Fitted Model
+    X_test (dataframe)       : Features matrix, one observation per row
+    y_test (dataframe/series): Labels column
+
+  Returns : 
+    - AUC as auc (float64) 
+    - Accuracy as acc  (float64)
+  '''
+
+  if model_name == "LR":
+    y_pred = model.predict_proba(X_test)
+    auc = round(metrics.roc_auc_score(y_test, y_pred[:,1])*100,2)
+    acc = round(metrics.accuracy_score(y_test, model.predict(X_test))*100,2)
+    return auc, acc
+
+  elif model_name == "NN":
+    y_pred = model.predict(X_test)
+    auc = round(metrics.roc_auc_score(y_test, y_pred)*100,2)
+    _, acc = model.evaluate(X_test, y_test,batch_size=1000, verbose=0)
+    return auc, round(acc*100, 2)
+  
+  else:
+    return NotImplementedError
+
+
+def fit_model(model_name, X_train, y_train, model_params = None):
 
   '''
   Function to calculate accuracy (acc) and Area under the ROCr Curve (AUC)
 
   Parameters : 
     - model_name (list): Either Logistic or Neural Network Model ['LR','NN']
-    - X_train, y_train, X_test, y_test (dataframe) : train and test data 
+    - X_train, y_train (dataframe) : train data 
     - model_params (dict) : 
                             - For logistic regression : the total number of iterations 
                             - For Neural Network : Epochs to train the model
-    - dry_run : # TODO Not sure what it does 
 
-  Returns : 
-    - AUC as auc (float64) 
-    - Accuracy as acc  (float64)
+  Returns :
     - model : trained model
   
   '''
@@ -139,30 +187,20 @@ def fit_and_get_metrics(model_name, X_train, y_train, X_test, y_test, model_para
     else:
       lr = LogisticRegression(penalty = 'l1', solver = "saga", n_jobs = -1, max_iter = 100)
 
-    if dry_run:
-      return 0, 0, lr
-
     lr.fit(X_train, y_train)
-    y_pred = lr.predict_proba(X_test)
-    auc = round(metrics.roc_auc_score(y_test, y_pred[:,1])*100,2)
-    acc = round(metrics.accuracy_score(y_test, lr.predict(X_test))*100,2)
-    return auc, acc, lr
+
+    return lr
   
   elif model_name == "NN":
 
     model = get_model(X_train.shape[1])
 
-    if dry_run:
-      return 0, 0, model
-
     if model_params is not None:
       model.fit(x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2, **model_params)
     else:
       model.fit(epochs = 25, x = X_train, y = y_train, batch_size = 1000, verbose = 1, validation_split = 0.2)
-    y_pred = model.predict(X_test)
-    auc = round(metrics.roc_auc_score(y_test, y_pred)*100,2)
-    _, acc = model.evaluate(X_test, y_test,batch_size=1000, verbose=0)
-    return auc, round(acc*100, 2), model
+
+    return model
   
   else:
     logger.debug(" Enter model name string as LR or NN (for Logistic Regression or Neural Network respectively).")
