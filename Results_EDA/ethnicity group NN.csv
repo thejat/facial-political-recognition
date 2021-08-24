@@ -1,0 +1,11 @@
+,Group Name,Model,Feature Set,Test AUC,Test Accuracy
+top,united states_1_fb_black,NN,Image and Self Reported Features,83.4,83.13
+top,united states_1_fb_black,NN,"Image, Self-reported and Extracted Features",82.87,82.21
+top,united states_1_fb_black,NN,Image Features,82.83,82.24
+top,united states_1_fb_black,NN,Image and Extracted Features,81.92,81.59
+top,united states_0_fb_black,NN,Image and Self Reported Features,81.06,78.94
+low,united kingdom_1_dating_asian,NN,Image Features,51.89,69.21
+low,canada_1_dating_asian,NN,Image and Extracted Features,50.81,70.25
+low,united kingdom_1_dating_india,NN,Image and Extracted Features,50.04,71.81
+low,united kingdom_1_dating_india,NN,Image and Self Reported Features,48.55,71.81
+low,united kingdom_1_dating_india,NN,Image Features,47.6,71.81
