@@ -1,0 +1,255 @@
+Group Name,Model,Feature Set,Test AUC,Test Accuracy
+united states_1_fb_white,NN,Image Features,64.55,61.21
+united states_1_fb_white,LR,Image Features,64.26,60.65
+united states_1_fb_white,NN,Image and Self Reported Features,64.33,61.1
+united states_1_fb_white,LR,Image and Self Reported Features,64.3,60.82
+united states_1_fb_white,NN,Image and Extracted Features,63.93,60.48
+united states_1_fb_white,LR,Image and Extracted Features,69.69,65.17
+united states_1_fb_white,NN,"Image, Self-reported and Extracted Features",63.98,55.55
+united states_1_fb_white,LR,"Image, Self-reported and Extracted Features",69.75,65.26
+united states_1_fb_asian,NN,Image Features,67.9,66.73
+united states_1_fb_asian,LR,Image Features,63.53,65.97
+united states_1_fb_asian,NN,Image and Self Reported Features,66.5,66.92
+united states_1_fb_asian,LR,Image and Self Reported Features,63.96,65.3
+united states_1_fb_asian,NN,Image and Extracted Features,63.88,66.25
+united states_1_fb_asian,LR,Image and Extracted Features,71.3,70.54
+united states_1_fb_asian,NN,"Image, Self-reported and Extracted Features",65.49,66.73
+united states_1_fb_asian,LR,"Image, Self-reported and Extracted Features",71.26,70.07
+united states_1_fb_india,NN,Image Features,60.23,70.02
+united states_1_fb_india,LR,Image Features,61.83,65.32
+united states_1_fb_india,NN,Image and Self Reported Features,64.01,71.31
+united states_1_fb_india,LR,Image and Self Reported Features,61.82,65.32
+united states_1_fb_india,NN,Image and Extracted Features,58.1,68.07
+united states_1_fb_india,LR,Image and Extracted Features,64.79,67.1
+united states_1_fb_india,NN,"Image, Self-reported and Extracted Features",58.57,67.1
+united states_1_fb_india,LR,"Image, Self-reported and Extracted Features",64.68,67.91
+united states_1_fb_black,NN,Image Features,82.83,82.24
+united states_1_fb_black,LR,Image Features,80.53,82.41
+united states_1_fb_black,NN,Image and Self Reported Features,83.4,83.13
+united states_1_fb_black,LR,Image and Self Reported Features,81.18,82.34
+united states_1_fb_black,NN,Image and Extracted Features,81.92,81.59
+united states_1_fb_black,LR,Image and Extracted Features,84.68,84.67
+united states_1_fb_black,NN,"Image, Self-reported and Extracted Features",82.87,82.21
+united states_1_fb_black,LR,"Image, Self-reported and Extracted Features",84.67,84.61
+united kingdom_1_dating_white,NN,Image Features,67.32,65.34
+united kingdom_1_dating_white,LR,Image Features,64.05,62.9
+united kingdom_1_dating_white,NN,Image and Self Reported Features,67.03,64.45
+united kingdom_1_dating_white,LR,Image and Self Reported Features,64.19,63.1
+united kingdom_1_dating_white,NN,Image and Extracted Features,65.61,63.85
+united kingdom_1_dating_white,LR,Image and Extracted Features,66.4,64.38
+united kingdom_1_dating_white,NN,"Image, Self-reported and Extracted Features",66.1,64.18
+united kingdom_1_dating_white,LR,"Image, Self-reported and Extracted Features",66.42,64.43
+united kingdom_1_dating_black,NN,Image Features,61.78,71.01
+united kingdom_1_dating_black,LR,Image Features,57.48,64.95
+united kingdom_1_dating_black,NN,Image and Self Reported Features,66.84,71.54
+united kingdom_1_dating_black,LR,Image and Self Reported Features,57.84,65.88
+united kingdom_1_dating_black,NN,Image and Extracted Features,59.4,71.41
+united kingdom_1_dating_black,LR,Image and Extracted Features,64.54,71.28
+united kingdom_1_dating_black,NN,"Image, Self-reported and Extracted Features",57.02,70.09
+united kingdom_1_dating_black,LR,"Image, Self-reported and Extracted Features",64.55,71.28
+united kingdom_1_dating_india,NN,Image Features,47.6,71.81
+united kingdom_1_dating_india,LR,Image Features,48.64,65.77
+united kingdom_1_dating_india,NN,Image and Self Reported Features,48.55,71.81
+united kingdom_1_dating_india,LR,Image and Self Reported Features,48.91,67.79
+united kingdom_1_dating_india,NN,Image and Extracted Features,50.04,71.81
+united kingdom_1_dating_india,LR,Image and Extracted Features,50.36,69.8
+united kingdom_1_dating_india,NN,"Image, Self-reported and Extracted Features",55.7,72.48
+united kingdom_1_dating_india,LR,"Image, Self-reported and Extracted Features",50.29,69.8
+united kingdom_1_dating_asian,NN,Image Features,51.89,69.21
+united kingdom_1_dating_asian,LR,Image Features,54.42,59.6
+united kingdom_1_dating_asian,NN,Image and Self Reported Features,52.29,69.21
+united kingdom_1_dating_asian,LR,Image and Self Reported Features,54.31,58.28
+united kingdom_1_dating_asian,NN,Image and Extracted Features,54.1,68.54
+united kingdom_1_dating_asian,LR,Image and Extracted Features,54.1,60.6
+united kingdom_1_dating_asian,NN,"Image, Self-reported and Extracted Features",54.03,67.88
+united kingdom_1_dating_asian,LR,"Image, Self-reported and Extracted Features",54.08,60.26
+canada_1_dating_india,NN,Image Features,53.67,77.86
+canada_1_dating_india,LR,Image Features,58.67,68.27
+canada_1_dating_india,NN,Image and Extracted Features,56.16,76.01
+canada_1_dating_india,LR,Image and Extracted Features,63.6,74.91
+canada_1_dating_india,NN,"Image, Self-reported and Extracted Features",54.87,77.86
+canada_1_dating_india,LR,"Image, Self-reported and Extracted Features",63.5,75.28
+canada_1_dating_asian,NN,Image Features,57.99,72.43
+canada_1_dating_asian,LR,Image Features,51.99,66.04
+canada_1_dating_asian,NN,Image and Self Reported Features,56.29,72.27
+canada_1_dating_asian,LR,Image and Self Reported Features,52.24,65.89
+canada_1_dating_asian,NN,Image and Extracted Features,50.81,70.25
+canada_1_dating_asian,LR,Image and Extracted Features,55.35,69.63
+canada_1_dating_asian,NN,"Image, Self-reported and Extracted Features",56.78,71.96
+canada_1_dating_asian,LR,"Image, Self-reported and Extracted Features",55.47,69.78
+canada_1_dating_black,NN,Image Features,59.09,76.65
+canada_1_dating_black,LR,Image Features,59.66,70.12
+canada_1_dating_black,NN,Image and Self Reported Features,60.04,75.94
+canada_1_dating_black,LR,Image and Self Reported Features,59.62,70.52
+canada_1_dating_black,NN,Image and Extracted Features,57.05,76.73
+canada_1_dating_black,LR,Image and Extracted Features,60.9,75.3
+canada_1_dating_black,NN,"Image, Self-reported and Extracted Features",58.87,76.65
+canada_1_dating_black,LR,"Image, Self-reported and Extracted Features",60.92,75.14
+canada_1_dating_white,NN,Image Features,62.82,69.52
+canada_1_dating_white,LR,Image Features,61.01,67.47
+canada_1_dating_white,NN,Image and Self Reported Features,63.57,69.62
+canada_1_dating_white,LR,Image and Self Reported Features,61.04,67.47
+canada_1_dating_white,NN,Image and Extracted Features,63.09,68.52
+canada_1_dating_white,LR,Image and Extracted Features,62.63,68.91
+canada_1_dating_white,NN,"Image, Self-reported and Extracted Features",62.6,64.59
+canada_1_dating_white,LR,"Image, Self-reported and Extracted Features",62.65,68.96
+canada_0_dating_asian,NN,Image Features,68.28,63.53
+canada_0_dating_asian,LR,Image Features,62.51,58.94
+canada_0_dating_asian,NN,Image and Self Reported Features,69.32,67.66
+canada_0_dating_asian,LR,Image and Self Reported Features,62.75,59.63
+canada_0_dating_asian,NN,Image and Extracted Features,62.42,57.57
+canada_0_dating_asian,LR,Image and Extracted Features,65.8,63.76
+canada_0_dating_asian,NN,"Image, Self-reported and Extracted Features",61.16,59.4
+canada_0_dating_asian,LR,"Image, Self-reported and Extracted Features",65.84,63.99
+canada_0_dating_india,NN,Image Features,68.35,65.28
+canada_0_dating_india,LR,Image Features,64.72,62.39
+canada_0_dating_india,NN,Image and Self Reported Features,72.28,67.09
+canada_0_dating_india,LR,Image and Self Reported Features,65.17,63.11
+canada_0_dating_india,NN,Image and Extracted Features,61.82,64.2
+canada_0_dating_india,LR,Image and Extracted Features,68.35,63.65
+canada_0_dating_india,NN,"Image, Self-reported and Extracted Features",62.1,61.84
+canada_0_dating_india,LR,"Image, Self-reported and Extracted Features",68.39,64.01
+canada_0_dating_white,NN,Image Features,67.74,62.52
+canada_0_dating_white,LR,Image Features,66.32,61.99
+canada_0_dating_white,NN,Image and Self Reported Features,67.71,62.28
+canada_0_dating_white,LR,Image and Self Reported Features,66.45,62.31
+canada_0_dating_white,NN,Image and Extracted Features,64.17,60.34
+canada_0_dating_white,LR,Image and Extracted Features,67.97,63.25
+canada_0_dating_white,NN,"Image, Self-reported and Extracted Features",65.75,61.28
+canada_0_dating_white,LR,"Image, Self-reported and Extracted Features",67.99,63.22
+canada_0_dating_black,NN,Image Features,68.53,64.73
+canada_0_dating_black,LR,Image Features,64.6,63.34
+canada_0_dating_black,NN,Image and Self Reported Features,71.17,66.62
+canada_0_dating_black,LR,Image and Self Reported Features,64.93,64.1
+canada_0_dating_black,NN,Image and Extracted Features,65.67,63.08
+canada_0_dating_black,LR,Image and Extracted Features,67.79,66.62
+canada_0_dating_black,NN,"Image, Self-reported and Extracted Features",63.48,61.95
+canada_0_dating_black,LR,"Image, Self-reported and Extracted Features",67.85,66.5
+united states_0_dating_white,NN,Image Features,69.58,70.07
+united states_0_dating_white,LR,Image Features,70.85,70.68
+united states_0_dating_white,NN,Image and Self Reported Features,70.32,70.01
+united states_0_dating_white,LR,Image and Self Reported Features,70.89,70.71
+united states_0_dating_white,NN,Image and Extracted Features,69.79,69.33
+united states_0_dating_white,LR,Image and Extracted Features,70.91,70.77
+united states_0_dating_white,NN,"Image, Self-reported and Extracted Features",69.89,70.1
+united states_0_dating_white,LR,"Image, Self-reported and Extracted Features",70.95,70.81
+united states_0_dating_black,NN,Image Features,78.24,71.86
+united states_0_dating_black,LR,Image Features,78.07,71.41
+united states_0_dating_black,NN,Image and Self Reported Features,78.67,72.26
+united states_0_dating_black,LR,Image and Self Reported Features,78.08,71.41
+united states_0_dating_black,NN,Image and Extracted Features,76.89,65.81
+united states_0_dating_black,LR,Image and Extracted Features,78.43,71.76
+united states_0_dating_black,NN,"Image, Self-reported and Extracted Features",77.42,69.37
+united states_0_dating_black,LR,"Image, Self-reported and Extracted Features",78.44,71.68
+united states_0_dating_india,NN,Image Features,79.09,70.84
+united states_0_dating_india,LR,Image Features,78.01,70.76
+united states_0_dating_india,NN,Image and Self Reported Features,79.59,71.54
+united states_0_dating_india,LR,Image and Self Reported Features,78.1,70.8
+united states_0_dating_india,NN,Image and Extracted Features,77.68,70.3
+united states_0_dating_india,LR,Image and Extracted Features,79.18,71.26
+united states_0_dating_india,NN,"Image, Self-reported and Extracted Features",77.9,70.36
+united states_0_dating_india,LR,"Image, Self-reported and Extracted Features",79.2,71.21
+united states_0_dating_asian,NN,Image Features,77.91,71.26
+united states_0_dating_asian,LR,Image Features,75.76,69.34
+united states_0_dating_asian,NN,Image and Self Reported Features,78.04,71.57
+united states_0_dating_asian,LR,Image and Self Reported Features,76.05,69.5
+united states_0_dating_asian,NN,Image and Extracted Features,76.85,71.06
+united states_0_dating_asian,LR,Image and Extracted Features,77.59,70.88
+united states_0_dating_asian,NN,"Image, Self-reported and Extracted Features",76.61,69.14
+united states_0_dating_asian,LR,"Image, Self-reported and Extracted Features",77.65,70.91
+united states_0_fb_asian,NN,Image Features,67.9,70.64
+united states_0_fb_asian,LR,Image Features,66.53,65.75
+united states_0_fb_asian,NN,Image and Self Reported Features,68.0,68.81
+united states_0_fb_asian,LR,Image and Self Reported Features,66.63,66.51
+united states_0_fb_asian,NN,Image and Extracted Features,60.56,65.14
+united states_0_fb_asian,LR,Image and Extracted Features,71.43,70.95
+united states_0_fb_asian,NN,"Image, Self-reported and Extracted Features",59.19,65.75
+united states_0_fb_asian,LR,"Image, Self-reported and Extracted Features",71.49,71.1
+united states_0_fb_india,NN,Image Features,67.09,64.96
+united states_0_fb_india,LR,Image Features,65.16,62.76
+united states_0_fb_india,NN,Image and Self Reported Features,69.47,65.27
+united states_0_fb_india,LR,Image and Self Reported Features,65.35,62.86
+united states_0_fb_india,NN,Image and Extracted Features,61.26,61.96
+united states_0_fb_india,LR,Image and Extracted Features,69.7,65.07
+united states_0_fb_india,NN,"Image, Self-reported and Extracted Features",59.52,60.36
+united states_0_fb_india,LR,"Image, Self-reported and Extracted Features",69.85,64.26
+united states_0_fb_white,NN,Image Features,66.69,62.26
+united states_0_fb_white,LR,Image Features,65.45,60.89
+united states_0_fb_white,NN,Image and Self Reported Features,67.13,61.66
+united states_0_fb_white,LR,Image and Self Reported Features,65.56,60.64
+united states_0_fb_white,NN,Image and Extracted Features,64.93,60.57
+united states_0_fb_white,LR,Image and Extracted Features,71.34,65.03
+united states_0_fb_white,NN,"Image, Self-reported and Extracted Features",63.5,55.74
+united states_0_fb_white,LR,"Image, Self-reported and Extracted Features",71.37,64.98
+united states_0_fb_black,NN,Image Features,81.0,78.06
+united states_0_fb_black,LR,Image Features,76.36,76.85
+united states_0_fb_black,NN,Image and Self Reported Features,81.06,78.94
+united states_0_fb_black,LR,Image and Self Reported Features,77.14,77.01
+united states_0_fb_black,NN,Image and Extracted Features,79.57,77.07
+united states_0_fb_black,LR,Image and Extracted Features,82.61,79.88
+united states_0_fb_black,NN,"Image, Self-reported and Extracted Features",78.57,76.85
+united states_0_fb_black,LR,"Image, Self-reported and Extracted Features",82.66,79.82
+united states_1_dating_asian,NN,Image Features,63.71,61.8
+united states_1_dating_asian,LR,Image Features,63.28,61.31
+united states_1_dating_asian,NN,Image and Self Reported Features,63.72,61.74
+united states_1_dating_asian,LR,Image and Self Reported Features,63.33,61.28
+united states_1_dating_asian,NN,Image and Extracted Features,62.01,59.68
+united states_1_dating_asian,LR,Image and Extracted Features,64.54,62.34
+united states_1_dating_asian,NN,"Image, Self-reported and Extracted Features",62.15,59.19
+united states_1_dating_asian,LR,"Image, Self-reported and Extracted Features",64.56,62.22
+united states_1_dating_black,NN,Image Features,67.29,66.44
+united states_1_dating_black,LR,Image Features,67.91,67.12
+united states_1_dating_black,NN,Image and Self Reported Features,67.86,66.27
+united states_1_dating_black,LR,Image and Self Reported Features,67.92,67.12
+united states_1_dating_black,NN,Image and Extracted Features,67.1,66.01
+united states_1_dating_black,LR,Image and Extracted Features,68.07,67.01
+united states_1_dating_black,NN,"Image, Self-reported and Extracted Features",67.21,66.37
+united states_1_dating_black,LR,"Image, Self-reported and Extracted Features",68.07,67.01
+united states_1_dating_india,NN,Image Features,64.72,61.99
+united states_1_dating_india,LR,Image Features,61.64,59.98
+united states_1_dating_india,NN,Image and Self Reported Features,65.55,63.23
+united states_1_dating_india,LR,Image and Self Reported Features,61.97,60.01
+united states_1_dating_india,NN,Image and Extracted Features,62.5,59.44
+united states_1_dating_india,LR,Image and Extracted Features,64.65,62.4
+united states_1_dating_india,NN,"Image, Self-reported and Extracted Features",58.59,47.82
+united states_1_dating_india,LR,"Image, Self-reported and Extracted Features",64.74,62.46
+united states_1_dating_white,NN,Image Features,64.91,60.98
+united states_1_dating_white,LR,Image Features,66.1,61.79
+united states_1_dating_white,NN,Image and Self Reported Features,65.66,61.4
+united states_1_dating_white,LR,Image and Self Reported Features,66.1,61.79
+united states_1_dating_white,NN,Image and Extracted Features,64.96,56.48
+united states_1_dating_white,LR,Image and Extracted Features,66.1,61.79
+united states_1_dating_white,NN,"Image, Self-reported and Extracted Features",65.47,60.86
+united states_1_dating_white,LR,"Image, Self-reported and Extracted Features",66.1,61.79
+united kingdom_0_dating_black,NN,Image Features,57.78,60.95
+united kingdom_0_dating_black,LR,Image Features,58.46,58.74
+united kingdom_0_dating_black,NN,Image and Self Reported Features,59.66,61.12
+united kingdom_0_dating_black,LR,Image and Self Reported Features,58.99,58.74
+united kingdom_0_dating_black,NN,Image and Extracted Features,57.37,59.76
+united kingdom_0_dating_black,LR,Image and Extracted Features,64.36,60.27
+united kingdom_0_dating_black,NN,"Image, Self-reported and Extracted Features",61.82,52.8
+united kingdom_0_dating_black,LR,"Image, Self-reported and Extracted Features",64.41,60.44
+united kingdom_0_dating_india,NN,Image Features,62.85,73.3
+united kingdom_0_dating_india,LR,Image Features,60.04,66.21
+united kingdom_0_dating_india,NN,Image and Self Reported Features,64.4,74.11
+united kingdom_0_dating_india,LR,Image and Self Reported Features,60.28,66.76
+united kingdom_0_dating_india,NN,Image and Extracted Features,53.6,71.93
+united kingdom_0_dating_india,LR,Image and Extracted Features,62.24,67.85
+united kingdom_0_dating_india,NN,"Image, Self-reported and Extracted Features",52.3,69.21
+united kingdom_0_dating_india,LR,"Image, Self-reported and Extracted Features",62.24,68.12
+united kingdom_0_dating_white,NN,Image Features,66.18,61.44
+united kingdom_0_dating_white,LR,Image Features,64.58,60.62
+united kingdom_0_dating_white,NN,Image and Self Reported Features,66.86,62.54
+united kingdom_0_dating_white,LR,Image and Self Reported Features,64.71,60.78
+united kingdom_0_dating_white,NN,Image and Extracted Features,63.34,58.01
+united kingdom_0_dating_white,LR,Image and Extracted Features,66.56,62.41
+united kingdom_0_dating_white,NN,"Image, Self-reported and Extracted Features",63.6,59.9
+united kingdom_0_dating_white,LR,"Image, Self-reported and Extracted Features",66.6,62.41
+united kingdom_0_dating_asian,NN,Image Features,60.3,55.81
+united kingdom_0_dating_asian,LR,Image Features,61.19,59.07
+united kingdom_0_dating_asian,NN,Image and Self Reported Features,64.83,60.47
+united kingdom_0_dating_asian,LR,Image and Self Reported Features,61.36,58.6
+united kingdom_0_dating_asian,NN,Image and Extracted Features,62.21,60.93
+united kingdom_0_dating_asian,LR,Image and Extracted Features,63.5,58.14
+united kingdom_0_dating_asian,NN,"Image, Self-reported and Extracted Features",55.69,56.74
+united kingdom_0_dating_asian,LR,"Image, Self-reported and Extracted Features",63.43,58.14

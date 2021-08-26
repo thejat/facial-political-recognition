@@ -1,0 +1,9 @@
+Group Name,Model,Feature Set,Test AUC,Test Accuracy
+whole_dataset,NN,Image Features,70.98,64.99
+whole_dataset,LR,Image Features,71.98,65.8
+whole_dataset,NN,Image and Self Reported Features,71.98,65.67
+whole_dataset,LR,Image and Self Reported Features,72.71,66.36
+whole_dataset,NN,Image and Extracted Features,71.38,65.4
+whole_dataset,LR,Image and Extracted Features,72.3,66.12
+whole_dataset,NN,"Image, Self-reported and Extracted Features",71.77,65.75
+whole_dataset,LR,"Image, Self-reported and Extracted Features",73.04,66.65

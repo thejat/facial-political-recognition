@@ -1,11 +1,11 @@
 ,Group Name,Model,Feature Set,Test AUC,Test Accuracy
-top,"(US, Female, Facebook, Black)",LR,Image and Extracted Features,84.68,84.67
-top,"(US, Female, Facebook, Black)",LR,"Image, Self-reported and Extracted Features",84.67,84.61
-top,"(US, Male, Facebook, Black)",LR,"Image, Self-reported and Extracted Features",82.66,79.82
-top,"(US, Male, Facebook, Black)",LR,Image and Extracted Features,82.61,79.88
-top,"(US, Female, Facebook, Black)",LR,Image and Self Reported Features,81.18,82.34
-low,"(Canada, Female, Dating, Asian)",LR,Image Features,51.99,66.04
-low,"(UK, Female, Dating, India)",LR,Image and Extracted Features,50.36,69.8
-low,"(UK, Female, Dating, India)",LR,"Image, Self-reported and Extracted Features",50.29,69.8
-low,"(UK, Female, Dating, India)",LR,Image and Self Reported Features,48.91,67.79
-low,"(UK, Female, Dating, India)",LR,Image Features,48.64,65.77
+Top,"(US, Female, Facebook, Black)",LR,Image and Extracted Features,84.68,84.67
+Top,"(US, Female, Facebook, Black)",LR,"Image, Self-reported and Extracted Features",84.67,84.61
+Top,"(US, Male, Facebook, Black)",LR,"Image, Self-reported and Extracted Features",82.66,79.82
+Top,"(US, Male, Facebook, Black)",LR,Image and Extracted Features,82.61,79.88
+Top,"(US, Female, Facebook, Black)",LR,Image and Self Reported Features,81.18,82.34
+Bottom,"(Canada, Female, Dating, Asian)",LR,Image Features,51.99,66.04
+Bottom,"(UK, Female, Dating, India)",LR,Image and Extracted Features,50.36,69.8
+Bottom,"(UK, Female, Dating, India)",LR,"Image, Self-reported and Extracted Features",50.29,69.8
+Bottom,"(UK, Female, Dating, India)",LR,Image and Self Reported Features,48.91,67.79
+Bottom,"(UK, Female, Dating, India)",LR,Image Features,48.64,65.77
