@@ -19,7 +19,7 @@ The repository contains results_for_paper which contains data_for_paper which is
 2. Analysis :
     - [analysis.ipunb](https://github.com/thejat/facial-political-recognition/blob/master/analysis.ipynb) - This notebook reads the data and checks for the missing values, variable importance of the categorical features. 
     - [data_analysis_paper.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/data_analysis_paper.ipynb) - This notebook reads the data from the data_for_paper and gives the insights via count plots and sample sizes for different segments.
-    - [results_eda.ipynb]() - This notebook gives the insights in the model and segment performace metrics to understand the underlying petterns and influence of vatious covariates from self reported to estimated. 
+    - [results_eda.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/results.eda.ipynb) - This notebook gives the insights in the model and segment performace metrics to understand the underlying petterns and influence of vatious covariates from self reported to estimated. 
 
 3. Experiments :
     - [exp_whole_dataset.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/exp_whole_dataset.ipynb) - Notebook to experiment on the whole dataset and saves the results in the csv format.
