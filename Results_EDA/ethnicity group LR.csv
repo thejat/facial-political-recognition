@@ -5,7 +5,7 @@ Top,"(US, Male, Facebook, Black)",LR,"Image, Self-reported and Extracted Feature
 Top,"(US, Male, Facebook, Black)",LR,Image and Extracted Features,82.61,79.88
 Top,"(US, Female, Facebook, Black)",LR,Image and Self Reported Features,81.18,82.34
 Bottom,"(Canada, Female, Dating, Asian)",LR,Image Features,51.99,66.04
-Bottom,"(UK, Female, Dating, India)",LR,Image and Extracted Features,50.36,69.8
-Bottom,"(UK, Female, Dating, India)",LR,"Image, Self-reported and Extracted Features",50.29,69.8
-Bottom,"(UK, Female, Dating, India)",LR,Image and Self Reported Features,48.91,67.79
-Bottom,"(UK, Female, Dating, India)",LR,Image Features,48.64,65.77
+Bottom,"(UK, Female, Dating, Indian)",LR,Image and Extracted Features,50.36,69.8
+Bottom,"(UK, Female, Dating, Indian)",LR,"Image, Self-reported and Extracted Features",50.29,69.8
+Bottom,"(UK, Female, Dating, Indian)",LR,Image and Self Reported Features,48.91,67.79
+Bottom,"(UK, Female, Dating, Indian)",LR,Image Features,48.64,65.77
