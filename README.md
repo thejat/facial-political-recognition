@@ -1,4 +1,4 @@
-# Capstone IDS 560 - Project Under the guidance of Prof. Kyle Cheek
+# Can Political Inclinations Be Reliably Predicted Using Profile Pictures?
 
 ## Main Contributors are 
     - Babandeep Singh (babandeep193@gmail.com)
@@ -16,9 +16,11 @@ The repository contains results_for_paper which contains data_for_paper which is
 1. Environment Setup 
     - Since this project is a collaboration we relied on Google Colab for most of the basic programming which has capabilities of python 3.7 version.
     
-2. Data Analysis
+2. Analysis :
     - [analysis.ipunb](https://github.com/thejat/facial-political-recognition/blob/master/analysis.ipynb) - This notebook reads the data and checks for the missing values, variable importance of the categorical features. 
     - [data_analysis_paper.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/data_analysis_paper.ipynb) - This notebook reads the data from the data_for_paper and gives the insights via count plots and sample sizes for different segments.
+    - [results_eda.ipynb]
+3. Experiments :
     - [exp_whole_dataset.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/exp_whole_dataset.ipynb) - Notebook to experiment on the whole dataset and saves the results in the csv format.
     - [segment_sr.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/segment_sr.ipynb) - Notebook for experiment with segmented population based on (country, gender, source). 
     - [performance_vs_ethnicity.ipynb](https://github.com/thejat/facial-political-recognition/blob/master/performance_vs_ethnicity.ipynb) - Notebook for experiment with a further breakdown at estimated ethnicity groups. 
